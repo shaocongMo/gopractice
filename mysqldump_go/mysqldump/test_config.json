@@ -1,0 +1,9 @@
+{
+    "Host":"127.0.0.1",
+    "Port":"3306",
+    "Username":"root",
+    "Password":"root",
+    "Database":"yhly_game",
+    "TableNameRe":"",
+    "Charset":"utf8"
+}
