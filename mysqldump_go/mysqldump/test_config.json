@@ -4,6 +4,7 @@
     "Username":"root",
     "Password":"root",
     "Database":"yhly_game",
-    "TableNameRe":"",
-    "Charset":"utf8"
+    "TableNameRe":"template",
+    "Charset":"utf8",
+    "FilePath":"./db.sql"
 }
