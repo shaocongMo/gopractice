@@ -10,6 +10,7 @@ import (
 
 type Config interface {
 	DataSourceName() string
+	TarDataSourceName() string
 	GetTableNameRe() string
 	GetFilePath() string
 }
@@ -23,6 +24,11 @@ type config struct {
 	TableNameRe string
 	Charset     string
 	FilePath    string
+	TarHost     string
+	TarPort     string
+	TarUsername string
+	TarPassword string
+	TarDatabase string
 }
 
 func NewConfig(configFilePath string) (Config, error) {
@@ -43,6 +49,10 @@ func NewConfig(configFilePath string) (Config, error) {
 // "root:root@tcp(127.0.0.1)/go_todo?charset=utf8"
 func (c *config) DataSourceName() string {
 	return c.Username + ":" + c.Password + "@tcp(" + c.Host + ")/" + c.Database + "?charset=" + c.Charset
+}
+
+func (c *config) TarDataSourceName() string {
+	return c.TarUsername + ":" + c.TarPassword + "@tcp(" + c.TarHost + ")/" + c.TarDatabase + "?charset=" + c.Charset
 }
 
 func (c *config) GetTableNameRe() string {
