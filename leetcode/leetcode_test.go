@@ -1,10 +1,20 @@
 package leetcode
 
-import "testing"
+import (
+	"math/rand"
+	"testing"
+)
 
 func TestLeetCode(t *testing.T) {
 	// t.Run("test873", test873)
-	t.Run("test874", test874)
+	// t.Run("test874", test874)
+	// t.Run("test877", test877)
+	// t.Run("test878", test878)
+	// t.Run("test879", test879)
+	// t.Run("test880", test880)
+	// t.Run("test883", test883)
+	// t.Run("test885", test885)
+	t.Run("test887", test887)
 }
 
 func test873(t *testing.T) {
@@ -72,4 +82,103 @@ func test874(t *testing.T) {
 		n := numSquares(i)
 		t.Logf("Input: %d output: %d\n", i, n)
 	}
+}
+
+func test877(t *testing.T) {
+	minStack := Constructor()
+	minStack.Push(-2)
+	minStack.Push(0)
+	minStack.Push(-3)
+	min := minStack.GetMin()
+	t.Logf("min: %d\n", min)
+	minStack.Pop()
+	minStack.Top()
+	min2 := minStack.GetMin()
+	t.Logf("min2: %d\n", min2)
+}
+
+func test878(t *testing.T) {
+	t.Logf("Input: %s Result: %v", "()[]{}", isValid("()[]{}"))
+	t.Logf("Input: %s Result: %v", "(]", isValid("(]"))
+	t.Logf("Input: %s Result: %v", "([)]", isValid("([)]"))
+	t.Logf("Input: %s Result: %v", "{[]}", isValid("{[]}"))
+	t.Logf("Input: %s Result: %v", "]", isValid("]"))
+}
+
+func test879(t *testing.T) {
+	t.Logf("Input: %v Result: %v", []int{73, 74, 75, 71, 69, 72, 76, 73}, dailyTemperatures([]int{73, 74, 75, 71, 69, 72, 76, 73}))
+	t.Logf("Input: %v Result: %v", []int{73, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 89}, dailyTemperatures([]int{73, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 89}))
+}
+
+func test880(t *testing.T) {
+	t.Logf("Input: %v Result: %v", []string{"2", "1", "+", "3", "*"}, evalRPN([]string{"2", "1", "+", "3", "*"}))
+	t.Logf("Input: %v Result: %v", []string{"4", "13", "5", "/", "+"}, evalRPN([]string{"4", "13", "5", "/", "+"}))
+	t.Logf("Input: %v Result: %v", []string{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}, evalRPN([]string{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}))
+}
+
+func test883(t *testing.T) {
+	grid := [][]byte{{'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}}
+	t.Logf("Input: %s output %d\n", grid, numIslands(grid))
+
+	grid2 := [][]byte{}
+	t.Logf("Input: %s output %d\n", grid2, numIslands(grid2))
+
+	grid3 := [][]byte{{'0'}}
+	t.Logf("Input: %s output %d\n", grid3, numIslands(grid3))
+
+	grid4 := [][]byte{{'1'}}
+	t.Logf("Input: %s output %d\n", grid4, numIslands(grid4))
+
+	grid5 := [][]byte{{'1', '0', '0'}, {'0', '1', '0'}, {'0', '0', '1'}}
+	t.Logf("Input: %s output %d\n", grid4, numIslands(grid5))
+}
+
+func test885(t *testing.T) {
+	nums := []int{1, 1, 1, 1, 1}
+	s := 3
+	t.Logf("Input: nums: %v s:%d Output: %d\n", nums, s, findTargetSumWays(nums, s))
+
+	nums2 := []int{1, 1, 1, 1, 1}
+	s2 := 0
+	t.Logf("Input: nums: %v s:%d Output: %d\n", nums2, s2, findTargetSumWays(nums2, s2))
+
+	nums3 := []int{}
+	s3 := 0
+	t.Logf("Input: nums: %v s:%d Output: %d\n", nums3, s3, findTargetSumWays(nums3, s3))
+
+	nums4 := []int{}
+	for i := 0; i < 20; i++ {
+		nums4 = append(nums4, rand.Intn(1000))
+	}
+	s4 := 10
+	t.Logf("Input: nums: %v s:%d Output: %d\n", nums4, s4, findTargetSumWays(nums4, s4))
+}
+
+func test887(t *testing.T) {
+	root := &TreeNode{Val: 1, Left: nil, Right: &TreeNode{Val: 2, Left: &TreeNode{Val: 3}, Right: &TreeNode{Val: 4}}}
+	t.Logf("input: %v Output: %v", root, inorderTraversal(root))
+
+	root2 := &TreeNode{
+		Val: 1,
+		Left: &TreeNode{
+			Val:   2,
+			Left:  &TreeNode{Val: 4},
+			Right: &TreeNode{Val: 5}},
+		Right: &TreeNode{
+			Val:  3,
+			Left: &TreeNode{Val: 6},
+			Right: &TreeNode{
+				Val: 7,
+				Left: &TreeNode{
+					Val:   8,
+					Left:  &TreeNode{Val: 9},
+					Right: &TreeNode{Val: 10}}}},
+	}
+	t.Logf("input: %v Output: %v", root2, inorderTraversal(root2))
+
+	root3 := &TreeNode{Val: 1}
+	t.Logf("input: %v Output: %v", root3, inorderTraversal(root3))
+
+	t.Logf("input: %v Output: %v", []int{}, inorderTraversal(nil))
+
 }
