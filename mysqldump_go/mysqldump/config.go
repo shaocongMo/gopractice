@@ -46,13 +46,13 @@ func NewConfig(configFilePath string) (Config, error) {
 	return &config, nil
 }
 
-// "root:root@tcp(127.0.0.1)/go_todo?charset=utf8"
+// "root:root@tcp(127.0.0.1:port)/go_todo?charset=utf8"
 func (c *config) DataSourceName() string {
-	return c.Username + ":" + c.Password + "@tcp(" + c.Host + ")/" + c.Database + "?charset=" + c.Charset
+	return c.Username + ":" + c.Password + "@tcp(" + c.Host + ":" + c.Port + ")/" + c.Database + "?charset=" + c.Charset
 }
 
 func (c *config) TarDataSourceName() string {
-	return c.TarUsername + ":" + c.TarPassword + "@tcp(" + c.TarHost + ")/" + c.TarDatabase + "?charset=" + c.Charset
+	return c.TarUsername + ":" + c.TarPassword + "@tcp(" + c.TarHost + ":" + c.TarHost + ")/" + c.TarDatabase + "?charset=" + c.Charset
 }
 
 func (c *config) GetTableNameRe() string {
