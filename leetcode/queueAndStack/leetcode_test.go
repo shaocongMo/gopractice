@@ -218,3 +218,15 @@ func test892Logf(matrix [][]int, t *testing.T) {
 	t.Logf("-------------------------------")
 	t.Logf("-------------------------------")
 }
+
+func Test893(t *testing.T) {
+	test893Logf([][]int{{1}, {2}, {3}, {}}, t)
+	test893Logf([][]int{{1, 3}, {3, 0, 1}, {2}, {0}}, t)
+	test893Logf([][]int{{1}}, t)
+	test893Logf([][]int{{3}, {4}, {1}, {2}, {}}, t)
+}
+
+func test893Logf(rooms [][]int, t *testing.T) {
+	t.Logf("rooms: %v Output: %v", rooms, canVisitAllRooms(rooms))
+	t.Logf("-------------------------------")
+}
