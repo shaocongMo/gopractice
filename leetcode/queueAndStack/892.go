@@ -1,70 +1,51 @@
 package leetcode
 
-type Elem struct {
+type MatrixNode struct {
 	x int
 	y int
 }
 
 func updateMatrix(matrix [][]int) [][]int {
-
-	for i, row := range matrix {
-		for j, col := range row {
-			if col == 1 {
-				updateMatrixBFS(matrix, i, j, []Elem{{x: i, y: j}}, 0)
+	used := make([][]bool, len(matrix))
+	queue := []MatrixNode{}
+	for i := 0; i < len(matrix); i++ {
+		used[i] = make([]bool, len(matrix[i]))
+		for j := 0; j < len(matrix[i]); j++ {
+			if matrix[i][j] == 0 {
+				queue = append(queue, MatrixNode{x: i, y: j})
+				used[i][j] = true
 			}
 		}
+	}
+	deep := 0
+	for len(queue) > 0 {
+		queue_size := len(queue)
+		for i := 0; i < queue_size; i++ {
+			node := queue[0]
+			queue = queue[1:]
+			matrix[node.x][node.y] = deep
+			// up
+			if node.x-1 >= 0 && used[node.x-1][node.y] == false {
+				queue = append(queue, MatrixNode{x: node.x - 1, y: node.y})
+				used[node.x-1][node.y] = true
+			}
+			// down
+			if node.x+1 < len(matrix) && used[node.x+1][node.y] == false {
+				queue = append(queue, MatrixNode{x: node.x + 1, y: node.y})
+				used[node.x+1][node.y] = true
+			}
+			// left
+			if node.y-1 >= 0 && used[node.x][node.y-1] == false {
+				queue = append(queue, MatrixNode{x: node.x, y: node.y - 1})
+				used[node.x][node.y-1] = true
+			}
+			// right
+			if node.y+1 < len(matrix[node.x]) && used[node.x][node.y+1] == false {
+				queue = append(queue, MatrixNode{x: node.x, y: node.y + 1})
+				used[node.x][node.y+1] = true
+			}
+		}
+		deep++
 	}
 	return matrix
-}
-
-func updateMatrixBFS(matrix [][]int, x int, y int, elems []Elem, target int) {
-	var used = make([][]int, len(matrix))
-	for i, row := range matrix {
-		used[i] = make([]int, len(row))
-	}
-	used[x][y] = 1
-loop:
-	for len(elems) > 0 {
-		var tmp_elems = []Elem{}
-		target++
-		for len(elems) > 0 {
-			i := elems[0].x
-			j := elems[0].y
-
-			elems = elems[1:]
-			//up
-			if i-1 >= 0 && matrix[i-1][j] != 0 && used[i-1][j] == 0 {
-				tmp_elems = append(tmp_elems, Elem{x: i - 1, y: j})
-				used[i-1][j] = 1
-			} else if i-1 >= 0 && matrix[i-1][j] == 0 {
-				matrix[x][y] = target
-				break loop
-			}
-			//down
-			if i+1 < len(matrix) && matrix[i+1][j] != 0 && used[i+1][j] == 0 {
-				tmp_elems = append(tmp_elems, Elem{x: i + 1, y: j})
-				used[i+1][j] = 1
-			} else if i+1 < len(matrix) && matrix[i+1][j] == 0 {
-				matrix[x][y] = target
-				break loop
-			}
-			//down
-			if j-1 >= 0 && matrix[i][j-1] != 0 && used[i][j-1] == 0 {
-				tmp_elems = append(tmp_elems, Elem{x: i, y: j - 1})
-				used[i][j-1] = 1
-			} else if j-1 >= 0 && matrix[i][j-1] == 0 {
-				matrix[x][y] = target
-				break loop
-			}
-			//right
-			if j+1 < len(matrix[i]) && matrix[i][j+1] != 0 && used[i][j+1] == 0 {
-				tmp_elems = append(tmp_elems, Elem{x: i, y: j + 1})
-				used[i][j+1] = 1
-			} else if j+1 < len(matrix[i]) && matrix[i][j+1] == 0 {
-				matrix[x][y] = target
-				break loop
-			}
-		}
-		elems = tmp_elems
-	}
 }
