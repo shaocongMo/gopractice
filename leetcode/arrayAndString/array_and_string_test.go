@@ -52,9 +52,9 @@ func Test774(t *testing.T) {
 	test774Logf([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, t)
 	test774Logf([][]int{}, t)
 	test774Logf([][]int{{1}}, t)
-	test774Logf([][]int{{1,2,3,4},{5,6,7,8}}, t)
-	test774Logf([][]int{{1,2,3,4}}, t)
-	test774Logf([][]int{{1,2,3,4},{5,6,7,8},{9,10,11,12}}, t)
+	test774Logf([][]int{{1, 2, 3, 4}, {5, 6, 7, 8}}, t)
+	test774Logf([][]int{{1, 2, 3, 4}}, t)
+	test774Logf([][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}, t)
 }
 func test774Logf(matrix [][]int, t *testing.T) {
 	t.Logf("matrix: %v Output: %d", matrix, findDiagonalOrder(matrix))
@@ -64,19 +64,60 @@ func Test775(t *testing.T) {
 	test775Logf([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, t)
 	test775Logf([][]int{}, t)
 	test775Logf([][]int{{1}}, t)
-	test775Logf([][]int{{1,2,3,4},{5,6,7,8}}, t)
-	test775Logf([][]int{{1,2,3,4}}, t)
-	test775Logf([][]int{{1,2,3,4},{5,6,7,8},{9,10,11,12}}, t)
-	test775Logf([][]int{{1,2,3},{4,5,6},{7,8,9},{10,11,12}}, t)
+	test775Logf([][]int{{1, 2, 3, 4}, {5, 6, 7, 8}}, t)
+	test775Logf([][]int{{1, 2, 3, 4}}, t)
+	test775Logf([][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}, t)
+	test775Logf([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}}, t)
 }
 func test775Logf(matrix [][]int, t *testing.T) {
 	t.Logf("matrix: %v Output: %d", matrix, spiralOrder(matrix))
 }
 
-func Test776(t *testing.T){
+func Test776(t *testing.T) {
 	t.Logf("Num: %d Output: %v", 5, generate(5))
 	t.Logf("Num: %d Output: %v", 0, generate(0))
 	t.Logf("Num: %d Output: %v", 10, generate(10))
 	t.Logf("Num: %d Output: %v", 11, generate(11))
 	t.Logf("Num: %d Output: %v", 51, generate(51))
+}
+
+func Test779(t *testing.T) {
+	// test779Logf("11", "1", t)
+	// test779Logf("1010", "1011", t)
+	// test779Logf("111", "1", t)
+	test779Logf("111", "100000", t)
+	test779Logf("10000", "1", t)
+	test779Logf("10000", "10000", t)
+}
+
+func test779Logf(a string, b string, t *testing.T) {
+	t.Logf("A: %s B: %s Output: %s", a, b, addBinary(a, b))
+}
+
+func Test780(t *testing.T) {
+	test780Logf("hello", "ll", t)
+	test780Logf("aaaaa", "bba", t)
+	test780Logf("aabaaba", "abaab", t)
+	test780Logf("aabaaba", "", t)
+	test780Logf("", "", t)
+	test780Logf("", "ababa", t)
+	test780Logf("aaaabc", "abc", t)
+	test780Logf("aaabcabc", "abc", t)
+	test780Logf("abcaabcabc", "cabc", t)
+}
+
+func test780Logf(haystack string, needle string, t *testing.T) {
+	t.Logf("Input: %s %s Output: %d", haystack, needle, strStr(haystack, needle))
+}
+
+func Test781(t *testing.T) {
+	test781Logf([]string{"flower", "flow", "flight"}, t)
+	test781Logf([]string{"dog", "racecar", "car"}, t)
+	test781Logf([]string{"aacb", "aac", "aac"}, t)
+	test781Logf([]string{"aacb", "", "aac"}, t)
+	test781Logf([]string{}, t)
+}
+
+func test781Logf(strs []string, t *testing.T) {
+	t.Logf("Input: %v Output: %s", strs, longestCommonPrefix(strs))
 }
