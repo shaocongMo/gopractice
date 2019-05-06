@@ -47,3 +47,36 @@ func test772Logf(nums []int, t *testing.T) {
 	t.Logf("nums: %v", nums)
 	t.Logf("Output: %d", plusOne(nums))
 }
+
+func Test774(t *testing.T) {
+	test774Logf([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, t)
+	test774Logf([][]int{}, t)
+	test774Logf([][]int{{1}}, t)
+	test774Logf([][]int{{1,2,3,4},{5,6,7,8}}, t)
+	test774Logf([][]int{{1,2,3,4}}, t)
+	test774Logf([][]int{{1,2,3,4},{5,6,7,8},{9,10,11,12}}, t)
+}
+func test774Logf(matrix [][]int, t *testing.T) {
+	t.Logf("matrix: %v Output: %d", matrix, findDiagonalOrder(matrix))
+}
+
+func Test775(t *testing.T) {
+	test775Logf([][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, t)
+	test775Logf([][]int{}, t)
+	test775Logf([][]int{{1}}, t)
+	test775Logf([][]int{{1,2,3,4},{5,6,7,8}}, t)
+	test775Logf([][]int{{1,2,3,4}}, t)
+	test775Logf([][]int{{1,2,3,4},{5,6,7,8},{9,10,11,12}}, t)
+	test775Logf([][]int{{1,2,3},{4,5,6},{7,8,9},{10,11,12}}, t)
+}
+func test775Logf(matrix [][]int, t *testing.T) {
+	t.Logf("matrix: %v Output: %d", matrix, spiralOrder(matrix))
+}
+
+func Test776(t *testing.T){
+	t.Logf("Num: %d Output: %v", 5, generate(5))
+	t.Logf("Num: %d Output: %v", 0, generate(0))
+	t.Logf("Num: %d Output: %v", 10, generate(10))
+	t.Logf("Num: %d Output: %v", 11, generate(11))
+	t.Logf("Num: %d Output: %v", 51, generate(51))
+}
