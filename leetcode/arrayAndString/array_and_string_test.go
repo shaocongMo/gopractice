@@ -122,7 +122,7 @@ func test781Logf(strs []string, t *testing.T) {
 	t.Logf("Input: %v Output: %s", strs, longestCommonPrefix(strs))
 }
 
-func Test783(t *testing.T){
+func Test783(t *testing.T) {
 	test783Logf([]byte{'h', 'e', 'l', 'l', 'o'}, t)
 	test783Logf([]byte{'a'}, t)
 	test783Logf([]byte{}, t)
@@ -131,14 +131,14 @@ func Test783(t *testing.T){
 	test783Logf([]byte{'a', 'b', 'c', 'd'}, t)
 }
 
-func test783Logf(s []byte, t *testing.T){
+func test783Logf(s []byte, t *testing.T) {
 	t.Logf("Input: %v", s)
 	reverseString(s)
 	t.Logf("Output: %v", s)
 	t.Logf("--------------------")
 }
 
-func Test784(t *testing.T){
+func Test784(t *testing.T) {
 	test784Logf([]int{1, 4, 3, 2}, t)
 	test784Logf([]int{1, 2, 2, 1}, t)
 	test784Logf([]int{1, 1}, t)
@@ -152,6 +152,6 @@ func Test784(t *testing.T){
 	test784Logf([]int{-1, 0, 0, 0}, t)
 }
 
-func test784Logf(nums []int, t *testing.T){
+func test784Logf(nums []int, t *testing.T) {
 	t.Logf("Input: %v Output: %d", nums, arrayPairSum(nums))
 }
