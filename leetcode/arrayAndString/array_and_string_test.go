@@ -155,3 +155,67 @@ func Test784(t *testing.T) {
 func test784Logf(nums []int, t *testing.T) {
 	t.Logf("Input: %v Output: %d", nums, arrayPairSum(nums))
 }
+
+func Test785(t *testing.T) {
+	test785Logf([]int{2, 7, 11, 15}, 9, t)
+	test785Logf([]int{2, 7, 11, 15}, 17, t)
+	test785Logf([]int{2}, 17, t)
+	test785Logf([]int{}, 17, t)
+	test785Logf([]int{2, 7}, 17, t)
+	test785Logf([]int{2, 15}, 17, t)
+	test785Logf([]int{1, 2, 3, 4, 5, 6}, 4, t)
+	test785Logf([]int{-4, -3, -2, -1, 5}, 1, t)
+	test785Logf([]int{-4, -3, -2, -1, 5, 10}, 15, t)
+	test785Logf([]int{-4, -3, -2, -1, 5, 10}, 1, t)
+	test785Logf([]int{-4, -3, -2, -1, 5, 10}, 9, t)
+	test785Logf([]int{-4, -3, -2, -1, 5, 10}, 3, t)
+}
+
+func test785Logf(nums []int, target int, t *testing.T) {
+	t.Logf("Input: %v %d Output: %v", nums, target, twoSum(nums, target))
+}
+
+func Test787(t *testing.T) {
+	test787Logf([]int{3, 2, 2, 3}, 3, t)
+	test787Logf([]int{0, 1, 2, 2, 3, 0, 4, 2}, 2, t)
+	test787Logf([]int{1}, 2, t)
+	test787Logf([]int{}, 2, t)
+	test787Logf([]int{2, 2, 2}, 2, t)
+	test787Logf([]int{2, 2, 2, 3}, 2, t)
+	test787Logf([]int{2, 3, 3}, 2, t)
+	test787Logf([]int{3, 3, 2}, 2, t)
+}
+
+func test787Logf(nums []int, target int, t *testing.T) {
+	t.Logf("Input: %v %d", nums, target)
+	end := removeElement(nums, target)
+	t.Logf("Output: %v %d", nums[:end], end)
+	t.Logf("--------------------")
+}
+
+func Test788(t *testing.T) {
+	test788Logf([]int{1, 1, 0, 1, 1, 1}, t)
+	test788Logf([]int{1, 1, 0, 1, 0, 1}, t)
+	test788Logf([]int{}, t)
+	test788Logf([]int{0, 0}, t)
+	test788Logf([]int{0, 0, 1}, t)
+	test788Logf([]int{1, 0, 0}, t)
+	test788Logf([]int{1, 1, 0, 0}, t)
+	test788Logf([]int{0, 0, 1, 1}, t)
+	test788Logf([]int{0, 1, 1, 0, 1, 0}, t)
+}
+
+func test788Logf(nums []int, t *testing.T) {
+	t.Logf("Input: %v Output: %d", nums, findMaxConsecutiveOnes(nums))
+}
+
+func Test789(t *testing.T) {
+	test789Logf(7, []int{2, 3, 1, 2, 4, 3}, t)
+	test789Logf(7, []int{2, 3, 1, 2, 4, 3, 7}, t)
+	test789Logf(7, []int{7, 2, 3, 1, 2, 4, 3}, t)
+	test789Logf(7, []int{}, t)
+}
+
+func test789Logf(s int, nums []int, t *testing.T) {
+	t.Logf("Input: %d %v Output: %v", s, nums, minSubArrayLen(s, nums))
+}

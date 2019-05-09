@@ -1,28 +1,36 @@
 package leetcode
 
 func arrayPairSum(nums []int) int {
-	SelectSort(nums)
+	nums = mergeSort(nums)
 	total := 0
-	for i := 0; i < len(nums); i += 2{
-		if nums[i] > nums[i+1]{
-			total += nums[i+1]
-		}else{
-			total += nums[i]
-		}
-	}	
-    return total
+	for i := 0; i < len(nums); i += 2 {
+		total += nums[i]
+	}
+	return total
 }
 
-func SelectSort(nums []int){
-	for i := 0; i < len(nums) - 1; i++ {
-		min_index := i
-		for j := i + 1; j < len(nums); j++ {
-			if nums[j] < nums[min_index] {
-				min_index = j
-			}
-		}
-		if min_index != i{
-			nums[i], nums[min_index] = nums[min_index], nums[i]
+func mergeSort(nums []int) []int {
+	if len(nums) < 2 {
+		return nums
+	}
+	mid := len(nums) / 2
+	nums = merge(mergeSort(nums[:mid]), mergeSort(nums[mid:]))
+	return nums
+}
+
+func merge(left []int, right []int) []int {
+	result := []int{}
+	leftIndex, rightIndex := 0, 0
+	for leftIndex < len(left) && rightIndex < len(right) {
+		if left[leftIndex] > right[rightIndex] {
+			result = append(result, right[rightIndex])
+			rightIndex++
+		} else {
+			result = append(result, left[leftIndex])
+			leftIndex++
 		}
 	}
+	result = append(result, left[leftIndex:]...)
+	result = append(result, right[rightIndex:]...)
+	return result
 }
