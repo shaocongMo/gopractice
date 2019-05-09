@@ -219,3 +219,36 @@ func Test789(t *testing.T) {
 func test789Logf(s int, nums []int, t *testing.T) {
 	t.Logf("Input: %d %v Output: %v", s, nums, minSubArrayLen(s, nums))
 }
+
+func Test791(t *testing.T) {
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 3, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7, 8, 9}, 2, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 6, t)
+	test791Logf([]int{-1, -100, 3, 99}, 2, t)
+	test791Logf([]int{-1, -100, 3, 99}, 4, t)
+	test791Logf([]int{-1, -100, 3, 99}, 9, t)
+	test791Logf([]int{-1, -100, 3, 99}, 3, t)
+	test791Logf([]int{-1, -100, 3, 99}, 0, t)
+	test791Logf([]int{}, 10, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 0, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 1, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 2, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 3, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 4, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 5, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 6, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 7, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6, 7}, 8, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6}, 0, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6}, 1, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6}, 2, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6}, 3, t)
+	test791Logf([]int{1, 2, 3, 4, 5, 6}, 4, t)
+}
+
+func test791Logf(nums []int, k int, t *testing.T) {
+	t.Logf("Input: %v %d ", nums, k)
+	rotate(nums, k)
+	t.Logf("Output: %v", nums)
+	t.Logf("-------------------------")
+}
