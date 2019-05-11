@@ -252,3 +252,72 @@ func test791Logf(nums []int, k int, t *testing.T) {
 	t.Logf("Output: %v", nums)
 	t.Logf("-------------------------")
 }
+
+func Test792(t *testing.T) {
+	test792Logf(3, t)
+	test792Logf(4, t)
+	test792Logf(5, t)
+	test792Logf(6, t)
+	test792Logf(7, t)
+	test792Logf(8, t)
+}
+
+func test792Logf(k int, t *testing.T) {
+	t.Logf("Input: %d Output: %v", k, getRow(k))
+}
+
+func Test793(t *testing.T) {
+	test793Logf("the sky is blue", t)
+	test793Logf("  hello world!  ", t)
+	test793Logf("a good   example", t)
+	test793Logf("a b   c  ", t)
+}
+
+func test793Logf(s string, t *testing.T) {
+	t.Logf("Input: %s Output: [%s]", s, reverseWords(s))
+}
+
+func Test794(t *testing.T) {
+	test794Logf("Let's take LeetCode contest", t)
+	test794Logf("abc bca aa bc abcd a", t)
+}
+
+func test794Logf(s string, t *testing.T) {
+	t.Logf("Input: %s Output: [%s]", s, reverseWords2(s))
+}
+
+func Test795(t *testing.T) {
+	test795Logf([]int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}, t)
+	test795Logf([]int{}, t)
+	test795Logf([]int{1}, t)
+	test795Logf([]int{1, 2, 3, 4}, t)
+	test795Logf([]int{1, 2, 3, 4, 4, 4, 4, 4}, t)
+	test795Logf([]int{1, 1, 1, 1, 1, 2, 3, 4, 4, 4, 4, 4}, t)
+	test795Logf([]int{1, 2, 2, 2, 2, 2, 3}, t)
+	test795Logf([]int{1, 1, 1, 1, 1, 2, 3}, t)
+}
+
+func test795Logf(nums []int, t *testing.T) {
+	t.Logf("Input: %v", nums)
+	j := removeDuplicates(nums)
+	t.Logf("Output: %v", nums[:j])
+	t.Logf("------------------------")
+}
+
+func Test796(t *testing.T) {
+	test796Logf([]int{0, 1, 0, 3, 12}, t)
+	test796Logf([]int{0, 1, 0, 0, 0}, t)
+	test796Logf([]int{1, 0, 0, 0}, t)
+	test796Logf([]int{0, 0, 0, 0, 1}, t)
+	test796Logf([]int{0, 0, 0, 0, 0, 2}, t)
+	test796Logf([]int{0}, t)
+	test796Logf([]int{2}, t)
+	test796Logf([]int{}, t)
+}
+
+func test796Logf(nums []int, t *testing.T) {
+	t.Logf("Input: %v", nums)
+	moveZeroes(nums)
+	t.Logf("Output: %v", nums)
+	t.Logf("------------------------")
+}
