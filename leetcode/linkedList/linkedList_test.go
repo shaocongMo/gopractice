@@ -166,3 +166,196 @@ func test747Logf(head *ListNode) {
 	}
 	fmt.Println()
 }
+
+func Test750(t *testing.T) {
+	test750Logf(
+		reverseList(&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}}))
+	test750Logf(
+		reverseList(&ListNode{Val: 1}))
+	test750Logf(
+		reverseList(&ListNode{Val: 1, Next: &ListNode{Val: 2}}))
+}
+
+func test750Logf(head *ListNode) {
+	for head != nil {
+		fmt.Printf("%d ", head.Val)
+		head = head.Next
+	}
+	fmt.Println()
+}
+
+func Test752(t *testing.T) {
+	test752Logf(removeElements(&ListNode{Val: 1,
+		Next: &ListNode{Val: 1,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 4,
+					Next: &ListNode{Val: 5}}}}}, 1))
+	test752Logf(removeElements(&ListNode{Val: 1,
+		Next: &ListNode{Val: 2,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 4,
+					Next: &ListNode{Val: 5}}}}}, 2))
+	test752Logf(removeElements(&ListNode{Val: 1,
+		Next: &ListNode{Val: 2,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 4,
+					Next: &ListNode{Val: 5}}}}}, 3))
+	test752Logf(removeElements(&ListNode{Val: 1,
+		Next: &ListNode{Val: 2,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 4,
+					Next: &ListNode{Val: 5}}}}}, 4))
+	test752Logf(
+		removeElements(&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}}, 5))
+	test752Logf(
+		removeElements(&ListNode{Val: 1}, 5))
+	test752Logf(
+		removeElements(&ListNode{Val: 1}, 1))
+
+}
+
+func test752Logf(head *ListNode) {
+	for head != nil {
+		fmt.Printf("%d ", head.Val)
+		head = head.Next
+	}
+	fmt.Println()
+}
+
+func Test753(t *testing.T) {
+	printListNode(oddEvenList(&ListNode{Val: 1,
+		Next: &ListNode{Val: 2,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 4,
+					Next: &ListNode{Val: 5}}}}}))
+	printListNode(oddEvenList(&ListNode{Val: 7,
+		Next: &ListNode{Val: 2,
+			Next: &ListNode{Val: 3,
+				Next: &ListNode{Val: 6,
+					Next: &ListNode{Val: 5}}}}}))
+	printListNode(oddEvenList(&ListNode{Val: 7}))
+	printListNode(oddEvenList(&ListNode{Val: 7, Next: &ListNode{Val: 1}}))
+	printListNode(oddEvenList(&ListNode{Val: 7, Next: &ListNode{Val: 1, Next: &ListNode{Val: 2}}}))
+}
+
+func Test754(t *testing.T) {
+	t.Logf("Output: %t", isPalindrome(&ListNode{Val: 1, Next: &ListNode{Val: 2}}))
+	t.Logf("Output: %t", isPalindrome(&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 2, Next: &ListNode{Val: 1}}}}))
+	t.Logf("Output: %t", isPalindrome(&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 1}}}))
+	t.Logf("Output: %t", isPalindrome(&ListNode{Val: 1}))
+	t.Logf("Output: %t", isPalindrome(nil))
+}
+
+func printListNode(head *ListNode) {
+	for head != nil {
+		fmt.Printf("%d ", head.Val)
+		head = head.Next
+	}
+	fmt.Println()
+}
+
+func Test762(t *testing.T) {
+	printListNode(mergeTwoLists(
+		&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 4}}},
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}}))
+
+	printListNode(mergeTwoLists(
+		&ListNode{Val: 1},
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}}))
+	printListNode(mergeTwoLists(
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}},
+		&ListNode{Val: 6}))
+
+	printListNode(mergeTwoLists(
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}},
+		nil))
+}
+
+func Test763(t *testing.T) {
+	printListNode(addTowNumbers(
+		&ListNode{Val: 2, Next: &ListNode{Val: 4, Next: &ListNode{Val: 3}}},
+		&ListNode{Val: 5, Next: &ListNode{Val: 6, Next: &ListNode{Val: 4}}}))
+	printListNode(addTowNumbers(
+		&ListNode{Val: 1},
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}}))
+	printListNode(addTowNumbers(
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}},
+		&ListNode{Val: 6}))
+	printListNode(addTowNumbers(
+		&ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}},
+		nil))
+}
+
+func Test767(t *testing.T) {
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		0))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		1))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		2))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		3))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		4))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		5))
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		10))
+
+	printListNode(rotateRight(
+		&ListNode{Val: 1,
+			Next: &ListNode{Val: 2,
+				Next: &ListNode{Val: 3,
+					Next: &ListNode{Val: 4,
+						Next: &ListNode{Val: 5}}}}},
+		6))
+	printListNode(rotateRight(
+		nil,
+		6))
+	printListNode(rotateRight(
+		&ListNode{Val: 1},
+		1))
+}
