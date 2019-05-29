@@ -84,13 +84,15 @@ func (db *mysqlDb) Dump() error {
 	wg.Add(table_num)
 	var dialect core.Dialect = db.engine.Dialect()
 	for _, table := range db.dump_tables {
-		time.Sleep(time.Millisecond * 100)
+		time.Sleep(time.Millisecond * 200)
 		go func(t *core.Table) {
 			defer wg.Done()
 			start := time.Now()
 			fmt.Printf("[%v] %s Start.\n", start.Format(time.RFC822), t.Name)
-			dropTableSql := "IF EXISTS DROP TABLE `" + t.Name + "`;"
+			dropTableSql := "DROP TABLE IF EXISTS `" + t.Name + "`;"
 			createTableSql := dialect.CreateTableSql(t, "", t.StoreEngine, "") + ";"
+
+			writeToFile(db.datafile, dropTableSql + "\n" + createTableSql + "\n")
 
 			cols := t.ColumnsSeq()
 			colNames := dialect.Quote(strings.Join(cols, dialect.Quote(", ")))
@@ -103,6 +105,7 @@ func (db *mysqlDb) Dump() error {
 			} else {
 				insertSqlHead := "INSERT INTO " + t.Name + " (" + colNames + ") VALUES "
 				insertSqlTail := ""
+				rows_num := 0
 				for rows.Next() {
 					dest := make([]interface{}, len(cols))
 					err := rows.ScanSlice(&dest)
@@ -128,26 +131,35 @@ func (db *mysqlDb) Dump() error {
 						}
 
 					}
+					rows_num++
+					if rows_num % 500 == 0{
+						if strings.EqualFold(insertSqlTail, "") {
+							insertSql = ""
+						} else {
+							insertSql = insertSqlHead + insertSqlTail[:len(insertSqlTail)-1] + ";"
+						}
+						writeToFile(db.datafile, insertSql + "\n")
+						insertSqlTail = ""
+						insertSql = ""
+					}
 				}
 				rows.Close()
 				if strings.EqualFold(insertSqlTail, "") {
 					insertSql = ""
 				} else {
 					insertSql = insertSqlHead + insertSqlTail[:len(insertSqlTail)-1] + ";"
+					writeToFile(db.datafile, insertSql + "\n")
 				}
 			}
-			session := db.tarEngine.Prepare()
-			session.Exec(dropTableSql)
-			session.Exec(createTableSql)
-			session.Exec(insertSql)
-			session.Commit()
-			session.Close()
-
-			// writeSql := dropTableSql + "\n" + createTableSql + "\n" + insertSql + "\n\n"
-			// db.datafile.Write([]byte(writeSql))
+			// session := db.tarEngine.Prepare()
+			// session.Exec(dropTableSql)
+			// session.Exec(createTableSql)
+			// session.Exec(insertSql)
+			// session.Commit()
+			// session.Close()
 
 			end := time.Now()
-			fmt.Printf("[%s] %s Finsh speed %d seconds.\n", end.Format(time.RFC822), t.Name, end.Unix()-start.Unix())
+			fmt.Printf("[%s] %s Finsh spend %d seconds.\n", end.Format(time.RFC822), t.Name, end.Unix()-start.Unix())
 
 			// db.dataAddLock.Lock()
 			// fmt.Println(t.Name, end.Unix() -start.Unix())
@@ -214,4 +226,10 @@ func colValToSting(val interface{}, col *core.Column) string {
 		}
 	}
 	return "NULL"
+}
+
+func writeToFile(file DataFile, data string){
+	if file != nil{
+		file.Write([]byte(data))
+	}
 }
