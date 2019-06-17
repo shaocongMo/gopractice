@@ -88,3 +88,35 @@ func Test36(t *testing.T) {
 func test36Logf(sudu [][]byte, t *testing.T) {
 	t.Logf("Input: %v Output: %v", sudu, isValidSudoku(sudu))
 }
+
+func Test48(t *testing.T) {
+	start := 1
+	end := 100
+	for i := start; i <= end; i++ {
+		nums := make([][]int, i)
+		num := 1
+		for x := 0; x < i; x++ {
+			nums[x] = make([]int, i)
+			for y := 0; y < i; y++ {
+				nums[x][y] = num
+				num++
+			}
+		}
+		test48Logf(nums, t)
+	}
+}
+
+func test48Logf(matrix [][]int, t *testing.T) {
+	t.Logf("Input: ")
+	printMatrix(matrix, t)
+	rotate(matrix)
+	t.Logf("Output: ")
+	printMatrix(matrix, t)
+}
+
+func printMatrix(matrix [][]int, t *testing.T) {
+	for _, row := range matrix {
+		t.Logf("%v", row)
+	}
+	t.Logf("=====================================")
+}
