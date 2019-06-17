@@ -3,13 +3,14 @@
     "Port":"3306",
     "Username":"root",
     "Password":"root",
-    "Database":"yhly_game",
+    "Database":"test",
     "TableNameRe":"(wardrobe|casting)",
+    "TableNameExceptRe":"mails",
     "Charset":"utf8",
     "FilePath":"",
     "TarHost": "127.0.0.1",
     "TarPort": "3306",
     "TarUsername": "root",
     "TarPassword": "root",
-    "TarDatabase": "yhly_game_2"
+    "TarDatabase": "test2"
 }

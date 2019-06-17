@@ -67,9 +67,11 @@ func (db *mysqlDb) InitDumpTables() error {
 	}
 	var table_index int = 0
 	tableNameReStr := db.config.GetTableNameRe()
+	tableNameExceptReStr := db.config.GetTableNameExceptRe()
 	tableNameRe := regexp.MustCompile(tableNameReStr)
+	tableNameExceptRe := regexp.MustCompile(tableNameExceptReStr)
 	for _, table := range tables {
-		if strings.EqualFold(tableNameReStr, "") || tableNameRe.MatchString(table.Name) {
+		if (strings.EqualFold(tableNameReStr, "") || tableNameRe.MatchString(table.Name) ) && !tableNameExceptRe.MatchString(table.Name)  {
 			tables[table_index] = table
 			table_index += 1
 		}

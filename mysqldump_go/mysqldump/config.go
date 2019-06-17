@@ -12,6 +12,7 @@ type Config interface {
 	DataSourceName() string
 	TarDataSourceName() string
 	GetTableNameRe() string
+	GetTableNameExceptRe() string
 	GetFilePath() string
 }
 
@@ -22,6 +23,7 @@ type config struct {
 	Password    string
 	Database    string
 	TableNameRe string
+	TableNameExceptRe string
 	Charset     string
 	FilePath    string
 	TarHost     string
@@ -57,6 +59,10 @@ func (c *config) TarDataSourceName() string {
 
 func (c *config) GetTableNameRe() string {
 	return c.TableNameRe
+}
+
+func (c *config) GetTableNameExceptRe() string{
+	return c.TableNameExceptRe
 }
 
 func (c *config) GetFilePath() string {
