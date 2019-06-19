@@ -120,3 +120,21 @@ func printMatrix(matrix [][]int, t *testing.T) {
 	}
 	t.Logf("=====================================")
 }
+
+func Test8(t *testing.T) {
+	test8Logf(10, t)
+	test8Logf(1000001, t)
+	test8Logf(100000, t)
+	test8Logf(120, t)
+	test8Logf(102, t)
+	test8Logf(-10, t)
+	test8Logf(2147483647, t)
+	test8Logf(7463847412, t)
+	test8Logf(8463847412, t)
+	test8Logf(-8463847412, t)
+	test8Logf(-9463847412, t)
+}
+
+func test8Logf(num int, t *testing.T) {
+	t.Logf("Input: %d Output: %d", num, reverse(num))
+}
