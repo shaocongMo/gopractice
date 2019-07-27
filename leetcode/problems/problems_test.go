@@ -120,3 +120,34 @@ func printMatrix(matrix [][]int, t *testing.T) {
 	}
 	t.Logf("=====================================")
 }
+
+func Test242(t *testing.T) {
+	test242Logf("anagram", "nagaram", t)
+	test242Logf("cat", "rat", t)
+	test242Logf("", "rat", t)
+	test242Logf("123", "111", t)
+	test242Logf("123", "321", t)
+	test242Logf("123", "213", t)
+}
+
+func test242Logf(str1 string, str2 string, t *testing.T) {
+	t.Logf("Input: %v %v Output: %v", str1, str2, isAnagram(str1, str2))
+}
+
+func Test125(t *testing.T) {
+	test125Logf("A man, a plan, a canal: Panama", t)
+	test125Logf("abc", t)
+	test125Logf("abcba", t)
+	test125Logf("abccba", t)
+	test125Logf("a", t)
+	test125Logf("aa", t)
+	test125Logf("ab", t)
+	test125Logf("", t)
+	test125Logf("0P", t)
+	test125Logf(" apG0i4maAs::sA0m4i0Gp0", t)
+	test125Logf("race a car", t)
+}
+
+func test125Logf(str string, t *testing.T) {
+	t.Logf("Input: %v Output: %v", str, isPalindrome(str))
+}
